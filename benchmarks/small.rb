@@ -4,7 +4,7 @@ require 'rubygems'
 require 'rgauge'
 require 'formz/import'
 
-benchmark 'Forms', :times => 200 do
+benchmark '', :times => 200 do
   report 'tag' do 
     tag :div, 'contents'
   end
@@ -21,7 +21,7 @@ benchmark 'Forms', :times => 200 do
     select :days, { :mon => 'Monday', :fri => 'Friday' }, :id => 'days'
   end
   report 'select with everything' do 
-    select :days, { :mon => 'Monday', :fri => 'Friday' }, :id => 'days', :label => 'Days', :required => true,
-      :description => 'Select a day.'
+    select :days, { :mon => 'Monday', :fri => 'Friday' }, :id => 'days', 
+      :label => 'Days', :required => true, :description => 'Select a day.'
   end
 end
