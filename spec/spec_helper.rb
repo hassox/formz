@@ -1,5 +1,6 @@
 
 require 'rubygems'
+require 'tagz/import'
 require 'formz/import'
 require 'rspec_hpricot_matchers'
 

@@ -22,3 +22,12 @@
 #++
 
 require 'formz/version'
+
+module Formz
+  autoload :Labels, 'formz/labels'
+  autoload :Helpers, 'formz/helpers'
+  autoload :Wrappers, 'formz/wrappers'
+  autoload :FauxMethod, 'formz/fauxmethod'
+  autoload :Descriptions, 'formz/descriptions'
+  autoload :AutoEncoding, 'formz/autoencoding'
+end
