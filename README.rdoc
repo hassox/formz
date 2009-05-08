@@ -3,7 +3,32 @@
 
 Framework independant form helpers.
 
-== License:
+== Features
+
+* Fast
+* Framework independant
+* Highly extendable
+* Input labels
+* Input descriptions
+* Fakes out HTTP method verb to GET / POST
+* Sets enctype when using file inputs
+* ORM Model support
+* Error display
+
+== Cherry Pick
+
+Use only what you want:
+
+  include Formz::Labels
+  include Formz::Description
+  include Formz::Helpers
+  ...
+  
+Or simply:
+
+  require 'formz/import'
+
+== License
 
 (The MIT License)
 

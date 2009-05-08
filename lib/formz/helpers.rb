@@ -46,7 +46,7 @@ module Formz
       options[:selected] = '' unless :selected.in? options
       select_options[''] = String === prompt ? prompt : '- Select -'
     end
-
+    # radio / checkbox groups
     # %w( form fieldset legend select textarea )
   end
 end
