@@ -7,6 +7,7 @@
 
 module Formz
   module Helpers
+    # TODO: refactor so switch of args is not needed ...create_tag
     %w( checkbox radio text submit reset hidden button password file ).each do |name|
       class_eval <<-END
         def #{name} name, value = nil, attrs = {}

@@ -5,7 +5,7 @@ Framework independant form helpers.
 
 == Features
 
-* Fast
+* Fast 
 * Framework independant
 * Highly extendable
 * Input labels
