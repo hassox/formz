@@ -1,0 +1,11 @@
+History.rdoc
+lib/formz/version.rb
+lib/formz.rb
+Rakefile
+README.rdoc
+spec/formz_spec.rb
+spec/spec_helper.rb
+tasks/docs.rake
+tasks/gemspec.rake
+tasks/spec.rake
+Manifest
