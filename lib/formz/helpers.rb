@@ -48,6 +48,29 @@ module Formz
       options[:selected] = '' unless :selected.in? options
       select_options[''] = String === prompt ? prompt : '- Select -'
     end
+    
+    def legend contents, attrs = {}, &block
+      tag :legend, contents, attrs, &block
+    end
+    
+    def form name, attrs = {}, &block
+      tag :form, { :id => "form-#{name}" }.merge(attrs), &block
+    end
+    
+    def fieldset name, legend = nil, attrs = {}, &block
+      attrs, legend = legend, nil if legend.is_a? Hash
+      tag :fieldset, legend ? legend(legend) : nil, { :id => "fieldset-#{name}" }.merge(attrs), &block
+    end
+    
+    def textarea name, contents = nil, attrs = {}, &block
+      attrs, contents = contents, nil if contents.is_a? Hash
+      tag :textarea, contents, { :name => name }.merge(attrs), &block
+    end
+    
+    def buttons attrs = {}, &block
+      tag :div, { :class => 'form-buttons' }.merge(attrs), &block
+    end
+    
     # radio / checkbox groups
     # %w( form fieldset legend select textarea )
   end

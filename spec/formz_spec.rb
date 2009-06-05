@@ -1,2 +1,20 @@
 
-puts text(:name, :label => 'Username', :description => 'Enter your user name.', :required => true)
+# TODO: fix buffer ... screws up and adds legend twice due to several blocks
+
+result = form :register, :action => '/register' do
+  fieldset :login, 'Login Information' do
+    
+  end
+  fieldset :account, 'Account Details' do
+    text :country, :label => 'Country'
+    text :city, :label => 'City'
+    fieldset :forum, 'Forum Related' do
+      textarea :signature, :label => 'Signature'
+    end
+  end
+  buttons do
+    submit :op, 'Join'
+    submit :cancel, 'Cancel'
+  end
+end
+puts result
