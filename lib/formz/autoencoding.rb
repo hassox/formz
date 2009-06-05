@@ -12,5 +12,10 @@ module Formz
       @__form_encoding = 'multipart/form-data'
       super
     end
+    
+    def form name, attrs = {}, &block
+      attrs[:enctype] = @__form_encoding if @__form_encoding
+      super
+    end
   end
 end

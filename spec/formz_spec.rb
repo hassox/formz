@@ -9,6 +9,7 @@ result = form :register, :action => '/register' do
     text :country, :label => 'Country'
     text :city, :label => 'City'
     fieldset :forum, 'Forum Related' do
+      file :image, :label => 'Avatar'
       textarea :signature, :label => 'Signature'
     end
   end
