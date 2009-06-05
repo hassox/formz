@@ -1,28 +1,29 @@
 
-##
-# = Labels
-#
-# The Formz:Labels module allows a :label attribute
-# to be passed, which then adds a label tag to the
-# markup output. Tags are nested nested within its
-# label, in cases such as for checkboxes or radio
-# buttons.
-#
-# When using labels, a :required attribute may also 
-# be passed, which will alter the markup to indicate
-# the input field is required.
-#
-# === Examples
-#
-#   tag :input, :type => :file, :name => :upload, :label => 'Upload', :required => true
-#
-#   <div class="form-upload form-file">
-#     <label for="upload">Upload<em>*</em>:</label>
-#     <input type="file" name="upload" />
-#   </div>
-#
-
 module Formz
+  
+  ##
+  # = Formz::Labels
+  #
+  # The Formz:Labels module allows a :label attribute
+  # to be passed, which then adds a label tag to the
+  # markup output. Tags are nested nested within its
+  # label, in cases such as for checkboxes or radio
+  # buttons.
+  #
+  # When using labels, a :required attribute may also 
+  # be passed, which will alter the markup to indicate
+  # the input field is required.
+  #
+  # === Examples
+  #
+  #   tag :input, :type => :file, :name => :upload, :label => 'Upload', :required => true
+  #
+  #   <div class="form-upload form-file">
+  #     <label for="upload">Upload<em>*</em>:</label>
+  #     <input type="file" name="upload" />
+  #   </div>
+  #
+  
   module Labels
     NESTED_LABEL_INPUT_TYPES = :checkbox, :radio
     

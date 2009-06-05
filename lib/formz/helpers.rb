@@ -1,13 +1,14 @@
 
-##
-# = Helpers
-#
-# The Formz:Helpers module provides unbound form related
-# helper methods such as #checkbox, #password and others.
-
 module Formz
+  
+  ##
+  # = Formz::Helpers
+  #
+  # The Formz:Helpers module provides unbound form related
+  # helper methods such as #checkbox, #password and others.
+  
   module Helpers
-    # TODO: refactor so switch of args is not needed ...create_tag
+
     %w( checkbox radio text submit reset hidden button password file ).each do |name|
       class_eval <<-END
         def #{name} name, value = nil, attrs = {}
