@@ -12,7 +12,7 @@ module Formz
   #
   #   tag :input, :type => :file, :name => :upload
   #
-  #   <div class="form-upload form-file">
+  #   <div class="field-upload field-file">
   #     <input type="file" name="upload" />
   #   </div>
   #
@@ -22,8 +22,8 @@ module Formz
 
     def create_tag name, contents, attrs, &block
       if name.in? WRAP_TAGS
-        classes = "form-#{attrs[:name].to_s.gsub('[', '-').gsub(']', '')}"
-        classes.add_class "form-#{attrs[:type]}" if :type.in? attrs
+        classes = "field-#{attrs[:name].to_s.gsub('[', '-').gsub(']', '')}"
+        classes.add_class "field-#{attrs[:type]}" if :type.in? attrs
         super :div, super, :class => classes
       else 
         super
