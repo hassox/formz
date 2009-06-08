@@ -80,5 +80,13 @@ describe Formz do
         end        
       end
     end
+    
+    describe "#buttons" do
+      it "should wrap in a buttons div" do
+        buttons(:id => 'login-buttons').should have_tag('div[@id=login-buttons]') do |div|
+          div['class'].should == 'form-buttons'
+        end
+      end
+    end
   end
 end
