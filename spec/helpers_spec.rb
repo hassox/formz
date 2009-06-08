@@ -47,6 +47,17 @@ describe Formz do
         end
       end
       
+      it "should allow multiple selections" do
+        options = { :nissan => 'Nissan', :acura => 'Acura', :ford => 'Sucks' }
+        markup = select :vehicle, options, :selected => [:nissan, :acura]
+        markup.should have_tag('option[@value=nissan]') do |option|
+          option['selected'].should == 'selected'
+        end
+        markup.should have_tag('option[@value=acura]') do |option|
+          option['selected'].should == 'selected'
+        end
+      end
+      
     end
   end
 end
