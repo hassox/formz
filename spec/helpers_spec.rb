@@ -89,11 +89,17 @@ describe Formz do
       end
     end
     
-    describe "#radio" do
-      it "should create a radio button" do
-        radio_group :yes => 'Yes', :no => 'No'
-        puts radio(:choice, :yes, :label => 'Yes')
-        puts radio(:choice, :no, :label => 'No')
+    describe "#radio_group" do
+      it "should create a radio button group" do
+        markup = radio_group :choice, { :yes => 'Yes', :no => 'No' }, :selected => :no
+        markup.should have_tag('input[@name=choice]', :times => 2)
+        markup.should have_tag('input[@value=no]') { |radio| radio['selected'].should == 'selected' }
+      end
+      
+      it "should allow multiple selections (though not legal)" do
+        markup = radio_group :choice, { :yes => 'Yes', :no => 'No' }, :selected => [:no, :yes]
+        markup.should have_tag('input[@value=yes]') { |radio| radio['selected'].should == 'selected' }
+        markup.should have_tag('input[@value=no]') { |radio| radio['selected'].should == 'selected' }
       end
     end
   end

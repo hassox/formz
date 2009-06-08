@@ -19,8 +19,14 @@ module Formz
       END
     end
     
-    def radio_group values, options = {}
-      
+    %w( checkbox radio ).each do |name|
+      class_eval <<-END
+        def #{name}_group name, values, options = {}
+          values.map do |key, value|
+            #{name} name, key, :label => value, :checked => option_selected?(key, options)
+          end.join
+        end
+      END
     end
     
     def select name, options, attrs = {}
