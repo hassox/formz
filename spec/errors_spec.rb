@@ -12,5 +12,9 @@ describe Formz do
       @markup.should have_tag('input[@type=password].error')
     end
     
+    it "should add error messages after failing fields" do
+      @markup.should have_tag('span.error', 'Invalid Password')
+    end
+    
   end
 end
