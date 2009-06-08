@@ -34,12 +34,18 @@ module Formz
       select_options.map do |key, value|
         if value.is_a? Hash
           tag :optgroup, select_options(value, options), :label => key
-        elsif options[:selected] == key
+        elsif key_selected? key, options
           select_option key, value, :selected => true
         else
           select_option key, value
         end
       end.join
+    end
+    
+    def key_selected? key, options = {}
+      Array === options[:selected] ? 
+        key.in?(options[:selected]) :
+          options[:selected] == key
     end
 
     def normalize_select_prompt select_options, options = {}
