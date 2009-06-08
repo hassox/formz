@@ -16,6 +16,7 @@ module Formz
   #     <input name="password" class=" error" type="password" value="" />
   #     <span class="error-message">Invalid Password</span>
   #   </div>
+  #
   
   module Errors
     
