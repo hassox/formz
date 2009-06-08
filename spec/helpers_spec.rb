@@ -88,5 +88,13 @@ describe Formz do
         end
       end
     end
+    
+    describe "#radio" do
+      it "should create a radio button" do
+        radio_group :yes => 'Yes', :no => 'No'
+        puts radio(:choice, :yes, :label => 'Yes')
+        puts radio(:choice, :no, :label => 'No')
+      end
+    end
   end
 end

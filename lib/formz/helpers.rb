@@ -18,7 +18,11 @@ module Formz
         end
       END
     end
-
+    
+    def radio_group values, options = {}
+      
+    end
+    
     def select name, options, attrs = {}
       options = select_options options, attrs
       attrs.delete :selected
@@ -29,9 +33,9 @@ module Formz
       tag :option, contents, { :value => value }.merge(attrs)
     end
 
-    def select_options select_options, options = {}
-      normalize_select_prompt select_options, options
-      select_options.map do |key, value|
+    def select_options values, options = {}
+      normalize_select_prompt values, options
+      values.map do |key, value|
         if value.is_a? Hash
           tag :optgroup, select_options(value, options), :label => key
         elsif option_selected? key, options
@@ -48,11 +52,11 @@ module Formz
           options[:selected] == key
     end
 
-    def normalize_select_prompt select_options, options = {}
+    def normalize_select_prompt values, options = {}
       return unless :prompt.in? options
       prompt = options.delete :prompt
       options[:selected] = '' unless :selected.in? options
-      select_options[''] = String === prompt ? prompt : '- Select -'
+      values[''] = String === prompt ? prompt : '- Select -'
     end
     
     def legend contents, attrs = {}, &block
