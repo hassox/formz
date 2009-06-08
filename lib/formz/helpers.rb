@@ -34,7 +34,7 @@ module Formz
       select_options.map do |key, value|
         if value.is_a? Hash
           tag :optgroup, select_options(value, options), :label => key
-        elsif key_selected? key, options
+        elsif option_selected? key, options
           select_option key, value, :selected => true
         else
           select_option key, value
@@ -42,7 +42,7 @@ module Formz
       end.join
     end
     
-    def key_selected? key, options = {}
+    def option_selected? key, options = {}
       Array === options[:selected] ? 
         key.in?(options[:selected]) :
           options[:selected] == key
