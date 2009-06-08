@@ -31,4 +31,5 @@ module Formz
   autoload :FauxMethod, 'formz/fauxmethod'
   autoload :Descriptions, 'formz/descriptions'
   autoload :AutoEncoding, 'formz/autoencoding'
+  autoload :Errors, 'formz/errors'
 end

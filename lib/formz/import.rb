@@ -6,3 +6,4 @@ include Formz::Descriptions
 include Formz::Wrappers
 include Formz::Helpers
 include Formz::AutoEncoding
+include Formz::Errors
