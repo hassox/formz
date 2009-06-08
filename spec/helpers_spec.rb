@@ -57,7 +57,12 @@ describe Formz do
           option['selected'].should == 'selected'
         end
       end
-      
+    end
+    
+    describe "#form" do
+      it "should add a form-ID" do
+        form(:login).should have_tag('form[@id=form-login]')
+      end
     end
   end
 end
