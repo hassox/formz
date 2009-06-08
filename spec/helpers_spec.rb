@@ -10,15 +10,17 @@ describe Formz do
         end
       end
       
-      it "should create nested optgroups" do
+      it "should create a select with optgroups" do
         options = {}
         options['Canada'] = { :ab => 'Alberta', :bc => 'British Columbia' }
         options['United States'] = { :oh => 'Ohio' }
         options[:other] = 'Other'
-        markup = select :province, options
+        markup = select :province, options, :selected => :ab
         markup.should have_tag('select') do |select|
           select.should have_tag('optgroup[@label=Canada]') do |group|
-            group.should have_tag('option[@value=ab]', 'Alberta')
+            group.should have_tag('option[@value=ab]', 'Alberta') do |option|
+              option['selected'].should == 'selected'
+            end
             group.should have_tag('option[@value=bc]', 'British Columbia')
           end
           select.should have_tag('optgroup[@label="United States"]') do |group|
@@ -27,6 +29,24 @@ describe Formz do
           select.should have_tag('option[@value=other]', 'Other')
         end
       end
+      
+      it "should allow a null prompt with a default" do
+        markup = select :vehicle, { :nissan => 'Nissan' }, :prompt => true
+        markup.should have_tag('option[@value=""]', '- Select -')
+      end
+      
+      it "should allow an arbitrary prompt" do
+        markup = select :vehicle, { :nissan => 'Nissan' }, :prompt => 'Please Select'
+        markup.should have_tag('option[@value=""]', 'Please Select')
+      end
+      
+      it "should allow selections by value" do
+        markup = select :province, { :ab => 'Alberta', :bc => 'British Columbia' }, :selected => :bc, :prompt => true
+        markup.should have_tag('option[@value=bc]') do |option|
+          option['selected'].should == 'selected'
+        end
+      end
+      
     end
   end
 end
