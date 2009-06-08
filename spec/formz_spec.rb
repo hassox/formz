@@ -3,7 +3,9 @@
 
 result = form :register, :action => '/register' do
   fieldset :login, 'Login Information' do
-    
+    text :username, :label => 'Username'
+    password :password, :label => 'Password'
+    password :password_confirm, :required => true, :description => 'Enter password between 6 - 30 characters.'
   end
   fieldset :account, 'Account Details' do
     text :country, :label => 'Country'
