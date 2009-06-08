@@ -64,5 +64,21 @@ describe Formz do
         form(:login).should have_tag('form[@id=form-login]')
       end
     end
+    
+    describe "#fieldset" do
+      it "should should add a legend when string passed as second arg" do
+        markup = fieldset :details, 'Account Details'
+        markup.should have_tag('fieldset[@id=fieldset-details]') do |fieldset|
+          fieldset.should have_tag('legend', 'Account Details')
+        end
+      end
+      
+      it "should allow hash of attributes, without legend" do
+        markup = fieldset :details, :id => :foo
+        markup.should have_tag('fieldset[@id=foo]') do |fieldset|
+          fieldset.should_not have_tag('legend')
+        end        
+      end
+    end
   end
 end
