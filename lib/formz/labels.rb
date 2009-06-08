@@ -30,7 +30,7 @@ module Formz
     def create_tag name, contents, attrs, &block
       if name != :optgroup && string = attrs.delete(:label)
         label_attrs = { :for => attrs[:name], :required => attrs.delete(:required) }
-        if nested_label_input? attrs[:type]
+        if attrs[:type].in? NESTED_LABEL_INPUT_TYPES
           label string, super, label_attrs
         else
           label(string, label_attrs) + super
@@ -39,16 +39,16 @@ module Formz
         super
       end
     end
-    
-    def nested_label_input? name
-      name.in? NESTED_LABEL_INPUT_TYPES
-    end
 
+    ##
+    # Return a label with _string_. When _contents_
+    # is present the label will act as a wrapper for
+    # checkboxes, radios etc.
+    
     def label string, contents = nil, attrs = {}
       attrs, contents = contents, nil if contents.is_a? Hash
-      required = attrs.delete :required
       suffix = contents ? '' :
-                 required ? '<em>*</em>:' :
+                 attrs.delete(:required) ? '<em>*</em>:' :
                    ':'
       tag :label, contents.to_s + string + suffix, attrs
     end

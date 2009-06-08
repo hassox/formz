@@ -127,7 +127,5 @@ module Formz
       tag :div, { :class => 'form-buttons' }.merge(attrs), &block
     end
     
-    # radio / checkbox groups
-    # %w( form fieldset legend select textarea )
   end
 end
