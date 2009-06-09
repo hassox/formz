@@ -29,18 +29,21 @@ module Formz
     
     def form_for model, attrs = {}, &block
       with_form_context model do
-        name = model.class.to_s.split('::').last.downcase
-        form name, attrs, &block  
+        form model_name(model), attrs, &block  
       end
     end
     
     def create_tag name, contents, attrs, &block
-      unless form_context.blank?
-        p attrs
+      unless form_context.blank? || name == :form
+        attrs[:name] = '%s[%s]' % [attrs[:name], model_name(form_context.last)]
         super
       else
         super
       end
+    end
+    
+    def model_name model
+      model.class.to_s.split('::').last.downcase
     end
         
   end
