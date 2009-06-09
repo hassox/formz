@@ -10,21 +10,21 @@ module Formz
   module FauxMethod
     
     ##
-    # Return array of form errors.
+    # Return a form.
     
-    def form_errors
-      @__form_errors ||= []
+    def form name, attrs = {}, &block
+      unless valid_http_method? attrs[:method]
+        method = hidden :_method, attrs[:method]
+        attrs[:method] = :post
+      end
+      tag :form, method || nil, { :id => "form-#{name}" }.merge(attrs), &block
     end
     
-    def create_tag name, contents, attrs, &block
-      attrs, contents = contents, nil if contents.is_a? Hash
-      if error = attrs.delete(:error)
-        form_errors << error
-        (attrs[:class] ||= '').add_class 'error'
-        super << super(:span, error, :class => 'error-message')
-      else
-        super
-      end
+    ##
+    # Check if _method_ is a valid form HTTP verb. (get, post).
+    
+    def valid_http_method? method
+      method.to_s.in? %w( post get )
     end
   end
 end
