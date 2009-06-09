@@ -42,6 +42,10 @@ module Formz
       end
     end
     
+    ##
+    # Return lowercase name of _model_. Forum::Post
+    # will become 'post', etc.
+    
     def model_name model
       model.class.to_s.split('::').last.downcase
     end
