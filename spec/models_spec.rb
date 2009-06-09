@@ -36,6 +36,10 @@ describe Formz do
         end
         markup.should have_tag('input[@value=foo]')
       end
+      
+      it "should populate using values in #params" do
+        
+      end
     end
   end
 end
