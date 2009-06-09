@@ -8,7 +8,44 @@ module Formz
   # helper methods such as #checkbox, #password and others.
   
   module Helpers
+    
+    ##
+    # Return a form.
+    
+    def form name, attrs = {}, &block
+      tag :form, { :id => "form-#{name}" }.merge(attrs), &block
+    end
+    
+    ##
+    # Return a legend with _contents_.
 
+    def legend contents, attrs = {}, &block
+      tag :legend, contents, attrs, &block
+    end
+    
+    ##
+    # Return a fieldset with optional _legend_.
+    
+    def fieldset name, legend = nil, attrs = {}, &block
+      attrs, legend = legend, nil if legend.is_a? Hash
+      tag :fieldset, legend ? legend(legend) : nil, { :id => "fieldset-#{name}" }.merge(attrs), &block
+    end
+    
+    ##
+    # Return a textarea.
+    
+    def textarea name, contents = nil, attrs = {}, &block
+      attrs, contents = contents, nil if contents.is_a? Hash
+      tag :textarea, contents, { :name => name }.merge(attrs), &block
+    end
+    
+    ##
+    # Wrap form buttons defined within _block_ in a div.
+    
+    def buttons attrs = {}, &block
+      tag :div, { :class => 'form-buttons' }.merge(attrs), &block
+    end
+    
     %w( checkbox radio text submit reset hidden button password file ).each do |name|
       class_eval <<-END
         def #{name} name, value = nil, attrs = {}
@@ -89,43 +126,6 @@ module Formz
       options[:selected] = '' unless :selected.in? options
       values[''] = String === prompt ? prompt : '- Select -'
     end
-    
-    ##
-    # Return a legend with _contents_.
-    
-    def legend contents, attrs = {}, &block
-      tag :legend, contents, attrs, &block
-    end
-    
-    ##
-    # Return a form.
-    
-    def form name, attrs = {}, &block
-      tag :form, { :id => "form-#{name}" }.merge(attrs), &block
-    end
-    
-    ##
-    # Return a fieldset with optional _legend_.
-    
-    def fieldset name, legend = nil, attrs = {}, &block
-      attrs, legend = legend, nil if legend.is_a? Hash
-      tag :fieldset, legend ? legend(legend) : nil, { :id => "fieldset-#{name}" }.merge(attrs), &block
-    end
-    
-    ##
-    # Return a textarea.
-    
-    def textarea name, contents = nil, attrs = {}, &block
-      attrs, contents = contents, nil if contents.is_a? Hash
-      tag :textarea, contents, { :name => name }.merge(attrs), &block
-    end
-    
-    ##
-    # Wrap form buttons defined within _block_ in a div.
-    
-    def buttons attrs = {}, &block
-      tag :div, { :class => 'form-buttons' }.merge(attrs), &block
-    end
-    
+     
   end
 end
