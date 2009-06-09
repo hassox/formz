@@ -10,7 +10,7 @@ Framework independant form helpers.
 * Highly extendable
 * Input labels
 * Input descriptions
-* Fakes out HTTP method verb to GET / POST
+* Fakes out HTTP method to GET / POST
 * Sets enctype when using file inputs
 * ORM Model support
 * Error display
