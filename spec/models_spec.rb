@@ -8,9 +8,10 @@ describe Formz do
     describe "#form_for" do
       it "should create a form in context to a model, populating fields" do
         form_for @user do
+          hidden :id
           text :name
           text :email
-          text :email
+          textarea :signature
         end
       end
       
