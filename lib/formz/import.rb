@@ -7,3 +7,4 @@ include Formz::Errors
 include Formz::Wrappers
 include Formz::Helpers
 include Formz::AutoEncoding
+include Formz::Models
