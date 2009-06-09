@@ -32,4 +32,5 @@ module Formz
   autoload :Descriptions, 'formz/descriptions'
   autoload :AutoEncoding, 'formz/autoencoding'
   autoload :Errors, 'formz/errors'
+  autoload :Models, 'formz/models'
 end
