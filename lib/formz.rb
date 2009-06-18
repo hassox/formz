@@ -26,11 +26,12 @@ require 'formz/version'
 
 module Formz
   autoload :Labels, 'formz/labels'
+  autoload :Errors, 'formz/errors'
+  autoload :Models, 'formz/models'
   autoload :Helpers, 'formz/helpers'
+  autoload :Defaults, 'formz/defaults'
   autoload :Wrappers, 'formz/wrappers'
   autoload :FauxMethod, 'formz/fauxmethod'
   autoload :Descriptions, 'formz/descriptions'
   autoload :AutoEncoding, 'formz/autoencoding'
-  autoload :Errors, 'formz/errors'
-  autoload :Models, 'formz/models'
 end

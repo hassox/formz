@@ -10,3 +10,4 @@ include Formz::Helpers
 include Formz::AutoEncoding
 include Formz::FauxMethod
 include Formz::Models
+include Formz::Defaults

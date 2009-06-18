@@ -36,7 +36,6 @@ module Formz
     
     def create_tag name, contents, attrs, &block
       unless name == :form || form_context.blank?
-        p form_context.last.methods.grep(/proper/).sort
         if model_has_property? form_context.last, attrs[:name]
           attrs[:name] = '%s[%s]' % [model_name(form_context.last), attrs[:name]]
         end
