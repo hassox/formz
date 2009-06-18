@@ -28,10 +28,14 @@ module Formz
   autoload :Labels, 'formz/labels'
   autoload :Errors, 'formz/errors'
   autoload :Models, 'formz/models'
+  autoload :Default, 'formz/default'
   autoload :Helpers, 'formz/helpers'
-  autoload :Defaults, 'formz/defaults'
   autoload :Wrappers, 'formz/wrappers'
   autoload :FauxMethod, 'formz/fauxmethod'
   autoload :Descriptions, 'formz/descriptions'
   autoload :AutoEncoding, 'formz/autoencoding'
+  module Default
+    autoload :Params, 'formz/default'
+    autoload :Models, 'formz/default'
+  end
 end
