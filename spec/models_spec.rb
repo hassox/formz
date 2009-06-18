@@ -23,7 +23,7 @@ describe Formz do
           name['value'].should == 'tj@vision-media.ca'
         end
         markup.should have_tag('textarea[@name=user[signature]]', 'Foo bar')
-        markup.should_not have_tag('input[@name=_method[user]]')
+        markup.should_not have_tag('input[@name=user[_method]]')
       end
       
       it "should override defaults when a value is present" do
@@ -33,47 +33,6 @@ describe Formz do
         markup.should have_tag('input[@value=tjholowaychuk]')
       end
 
-      it "should default values with :default" do
-        @user = Factory.build :user, :name => ''
-        markup = form_for @user do
-          text :name, :default => 'foo'
-        end
-        markup.should have_tag('input[@value=foo]')
-      end
-      
-      it "should default contents using :default for textareas etc" do
-        @user = Factory.build :user, :signature => ''
-        markup = form_for @user do
-          textarea :signature, :default => 'This is the default'
-        end
-        markup.should have_tag('textarea', 'This is the default')
-      end
-            
-      it "should give precedence to :value" do
-        markup = form_for @user do
-          text :name, :value => 'foo'
-        end
-        markup.should have_tag('input[@value=foo]')
-      end
-      
-      it "should give precedence to contents for textareas etc" do
-        markup = form_for @user do
-          textarea :signature, :default => 'This is the default'
-        end
-        markup.should have_tag('textarea', 'Foo bar')
-      end
-      
-      it "should populate using values in #params" do
-        
-      end
-      
-      it "should give precedence to #params over :default" do
-        
-      end
-      
-      it "should give precedence to :value over #params" do
-        
-      end
     end
   end
 end

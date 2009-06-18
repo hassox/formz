@@ -15,7 +15,8 @@ module Formz
     end
     
     ##
-    # 
+    # Push _model_ as the current context while executing
+    # _block_, and returning _block_'s results.
     
     def with_form_context model, &block
       form_context.push model
@@ -34,11 +35,21 @@ module Formz
     end
     
     def create_tag name, contents, attrs, &block
-      unless form_context.blank? || name == :form
-        attrs[:name] = '%s[%s]' % [attrs[:name], model_name(form_context.last)]
-        super
-      else
-        super
+      unless name == :form || form_context.blank?
+        p form_context.last.methods.grep(/proper/).sort
+        if model_has_property? form_context.last, attrs[:name]
+          attrs[:name] = '%s[%s]' % [model_name(form_context.last), attrs[:name]]
+        end
+      end
+      super
+    end
+    
+    ##
+    # Check if _model_ has _property_name_.
+    
+    def model_has_property? model, property_name
+      model.send(:properties).any? do |property|
+        property.name == property_name.to_sym
       end
     end
     
