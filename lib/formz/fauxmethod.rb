@@ -9,15 +9,15 @@ module Formz
   
   module FauxMethod
     
-    ##
-    # Return a form.
-    
-    def form name, attrs = {}, &block
-      unless valid_http_method? attrs[:method]
-        method = hidden :_method, attrs[:method]
-        attrs[:method] = :post
+    def create_tag name, contents, attrs, &block
+      if name == :form
+        unless valid_http_method? attrs[:method]
+          method = hidden :_method, attrs[:method]
+          attrs[:method] = :post
+          contents = contents.to_s << method
+        end
       end
-      tag :form, method || nil, { :id => "form-#{name}" }.merge(attrs), &block
+      super
     end
     
     ##
