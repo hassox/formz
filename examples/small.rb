@@ -2,6 +2,7 @@
 $:.unshift File.dirname(__FILE__) + '/../lib'
 require 'rubygems'
 require 'formz/import'
+include Formz::Helpers
 
 result = form :register, :action => '/register' do
   fieldset :login, 'Login Information' do
@@ -10,6 +11,7 @@ result = form :register, :action => '/register' do
     password :password_confirm, :required => true, :description => 'Enter password between 6 - 30 characters.'
   end
   fieldset :account, 'Account Details' do
+    select :sex, :male => 'Male', :female => 'Female', :label => 'Sex'
     text :country, :label => 'Country'
     text :city, :label => 'City'
     fieldset :forum, 'Forum Related' do
