@@ -2,9 +2,15 @@
 $:.unshift File.dirname(__FILE__) + '/../lib'
 require 'rubygems'
 require 'formz/import'
-include Formz::Helpers
 
-result = form :register, :action => '/register' do
+markup = form :login do
+  text :username
+end
+puts markup
+
+__END__
+
+markup = form :register, :action => '/register' do
   fieldset :login, 'Login Information' do
     text :username, :label => 'Username'
     password :password, :label => 'Password'
@@ -24,4 +30,4 @@ result = form :register, :action => '/register' do
     submit :cancel, 'Cancel'
   end
 end
-puts result
+puts markup

@@ -24,7 +24,7 @@ module Formz
       if name.in? WRAP_TAGS
         classes = "field-#{attrs[:name].to_s.gsub('[', '-').gsub(']', '')}"
         classes.add_class "field-#{attrs[:type]}" if :type.in? attrs
-        super :div, super, :class => classes
+        tag :div, super, :class => classes
       else 
         super
       end
