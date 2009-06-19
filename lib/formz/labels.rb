@@ -33,7 +33,7 @@ module Formz
         if attrs[:type].in? NESTED_LABEL_INPUT_TYPES
           label string, super, label_attrs
         else
-          label(string, label_attrs) + super
+          label(string, label_attrs) << super
         end
       else
         super
@@ -47,10 +47,9 @@ module Formz
     
     def label string, contents = nil, attrs = {}
       attrs, contents = contents, nil if contents.is_a? Hash
-      suffix = contents ? '' :
-                 attrs.delete(:required) ? '<em>*</em>:' :
-                   ':'
-      tag :label, contents.to_s + string + suffix, attrs
+      tag :label, contents.to_s + string + (contents ? '' :
+            attrs.delete(:required) ? '<em>*</em>:' :
+              ':'), attrs
     end
   end
 end

@@ -1,7 +1,27 @@
 
 $:.unshift File.dirname(__FILE__) + '/../lib'
 require 'rubygems'
-require 'formz/import'
+require 'formz'
+require 'tagz/import'
+include Formz::Helpers
+
+markup = form :login do
+  fieldset :details, 'Details' do
+    text :username
+    password :password
+  end
+  fieldset :details, 'Details' do
+    text :username
+    password :password
+  end
+  fieldset :details, 'Details' do
+    text :username
+    password :password
+  end
+end
+puts markup
+
+__END__
 
 markup = form :register, :action => '/register' do
   fieldset :login, 'Login Information' do
@@ -19,8 +39,8 @@ markup = form :register, :action => '/register' do
     end
   end
   buttons do
-    submit :op, 'Join'
-    submit :cancel, 'Cancel'
+    submit :op, 'Join', :value => :join
+    submit :op, 'Cancel', :value => :cancel
   end
 end
 puts markup
