@@ -36,8 +36,19 @@ module Formz
     
     def create_tag name, contents, attrs, &block
       unless name == :form || form_context.blank?
-        if model_has_property? form_context.last, attrs[:name]
-          attrs[:name] = '%s[%s]' % [model_name(form_context.last), attrs[:name]]
+        model = form_context.last
+        if model_has_property? model, attrs[:name]
+          attrs[:name] = '%s[%s]' % [model_name(model), attrs[:name]]
+          value = model.send attrs[:name]
+          case name
+          when :textarea ; contents = value
+          when :select   ; @__selected_value = value
+          else             attrs[:value] = value
+          end
+        elsif name == :option
+          if @__selected_value == attrs[:value].to_s
+            attrs[:selected] = true
+          end
         end
       end
       super

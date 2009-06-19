@@ -8,8 +8,8 @@ module Formz
   # when a file field is present.
   
   module AutoEncoding
-    def file *args, &block
-      @__form_encoding = 'multipart/form-data'
+    def create_tag name, contents, attrs, &block
+      @__form_encoding = 'multipart/form-data' if name == :file
       super
     end
   end

@@ -25,7 +25,6 @@ module Formz
     end
     
     def create_tag name, contents, attrs, &block
-      attrs, contents = contents, nil if contents.is_a? Hash
       if error = attrs.delete(:error)
         form_errors << error
         (attrs[:class] ||= '').add_class 'error'
