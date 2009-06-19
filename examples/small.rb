@@ -3,13 +3,6 @@ $:.unshift File.dirname(__FILE__) + '/../lib'
 require 'rubygems'
 require 'formz/import'
 
-markup = form :login do
-  text :username
-end
-puts markup
-
-__END__
-
 markup = form :register, :action => '/register' do
   fieldset :login, 'Login Information' do
     text :username, :label => 'Username'
