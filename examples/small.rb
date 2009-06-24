@@ -14,10 +14,6 @@ markup = form :login do
     text :username
     password :password
   end
-  fieldset :details, 'Details' do
-    text :username
-    password :password
-  end
 end
 puts markup
 

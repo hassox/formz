@@ -67,7 +67,10 @@ describe Formz do
     
     describe "#fieldset" do
       it "should should add a legend when string passed as second arg" do
-        markup = fieldset :details, 'Account Details'
+        markup = form :register do
+          fieldset :details, 'Account Details'
+        end
+        markup.should_not have_tag('form > legend')
         markup.should have_tag('fieldset[@id=fieldset-details]') do |fieldset|
           fieldset.should have_tag('legend', 'Account Details')
         end
