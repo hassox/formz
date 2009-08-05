@@ -21,6 +21,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #++
 
+$:.unshift '/Users/tjholowaychuk/scripts/gems/tagz/lib' 
 require 'tagz'
 require 'formz/version'
 
