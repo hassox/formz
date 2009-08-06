@@ -126,6 +126,22 @@ module Formz
       options[:selected] = '' unless :selected.in? options
       values[''] = String === prompt ? prompt : '- Select -'
     end
+    
+    #--
+    # Delegates
+    #++
+
+    module Delegates
+      %w( select_options select_option select checkbox radio text submit reset hidden 
+          button password file checkbox_group radio_group buttons textarea fieldset
+          legend form ).each do |meth|
+        class_eval <<-EOF
+          def #{meth} *args, &block
+            @contents << Formz::Helpers.#{meth}(*args, &block)
+          end
+        EOF
+      end
+    end
      
   end
 end
