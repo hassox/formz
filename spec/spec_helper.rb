@@ -1,4 +1,5 @@
 
+$:.unshift '/Users/tjholowaychuk/scripts/gems/tags/lib' 
 require 'rubygems'
 require 'dm-core'
 require 'dm-validations'

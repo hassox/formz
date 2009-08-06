@@ -20,7 +20,7 @@ module Formz
     # Return a legend with _contents_.
 
     def legend contents, attrs = {}, &block
-      tag :legend, contents, attrs, &block
+      Tagz.tag :legend, contents, attrs, &block
     end
     
     ##
