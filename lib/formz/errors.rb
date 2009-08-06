@@ -28,7 +28,7 @@ module Formz
       if error = attrs.delete(:error)
         form_errors << error
         (attrs[:class] ||= '').add_class 'error'
-        super << tag(:span, error, :class => 'error-message')
+        super << Tagz.tag(:span, error, :class => 'error-message')
       else
         super
       end

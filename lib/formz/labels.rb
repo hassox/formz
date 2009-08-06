@@ -47,7 +47,7 @@ module Formz
     
     def label string, contents = nil, attrs = {}
       attrs, contents = contents, nil if contents.is_a? Hash
-      tag :label, contents.to_s + string + (contents ? '' :
+      Tagz.tag :label, contents.to_s + string + (contents ? '' :
             attrs.delete(:required) ? '<em>*</em>:' :
               ':'), attrs
     end

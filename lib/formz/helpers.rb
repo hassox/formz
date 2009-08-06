@@ -13,7 +13,7 @@ module Formz
     # Return a form.
     
     def form name, attrs = {}, &block
-      tag :form, { :id => "form-#{name}" }.merge(attrs), &block
+      Tagz.tag :form, { :id => "form-#{name}" }.merge(attrs), &block
     end
     
     ##
@@ -28,7 +28,7 @@ module Formz
     
     def fieldset name, legend = nil, attrs = {}, &block
       attrs, legend = legend, nil if legend.is_a? Hash
-      tag :fieldset, legend ? legend(legend) : nil, { :id => "fieldset-#{name}" }.merge(attrs), &block
+      Tagz.tag :fieldset, legend ? legend(legend) : nil, { :id => "fieldset-#{name}" }.merge(attrs), &block
     end
     
     ##
@@ -36,14 +36,14 @@ module Formz
     
     def textarea name, contents = nil, attrs = {}, &block
       attrs, contents = contents, nil if contents.is_a? Hash
-      tag :textarea, contents, { :name => name }.merge(attrs), &block
+      Tagz.tag :textarea, contents, { :name => name }.merge(attrs), &block
     end
     
     ##
     # Wrap form buttons defined within _block_ in a div.
     
     def buttons attrs = {}, &block
-      tag :div, { :class => 'form-buttons' }.merge(attrs), &block
+      Tagz.tag :div, { :class => 'form-buttons' }.merge(attrs), &block
     end
     
     %w( checkbox radio text submit reset hidden button password file ).each do |name|
@@ -51,7 +51,7 @@ module Formz
         def #{name} name, value = nil, attrs = {}
           attrs, value = value, nil if value.is_a? Hash
           attrs[:value] ||= value
-          tag :input, { :type => :#{name}, :name => name }.merge(attrs)
+          Tagz.tag :input, { :type => :#{name}, :name => name }.merge(attrs)
         end
       END
     end
@@ -73,14 +73,14 @@ module Formz
     def select name, options, attrs = {}
       options = select_options options, attrs
       attrs.delete :selected
-      tag :select, options, { :name => name }.merge(attrs)
+      Tagz.tag :select, options, { :name => name }.merge(attrs)
     end
     
     ##
     # Return select option _contents_ with _value_.
 
     def select_option value, contents, attrs = {}
-      tag :option, contents, { :value => value }.merge(attrs)
+      Tagz.tag :option, contents, { :value => value }.merge(attrs)
     end
     
     ##
@@ -96,7 +96,7 @@ module Formz
       normalize_select_prompt values, options
       values.map do |key, value|
         if value.is_a? Hash
-          tag :optgroup, select_options(value, options), :label => key
+          Tagz.tag :optgroup, select_options(value, options), :label => key
         elsif option_selected? key, options[:selected]
           select_option key, value, :selected => true
         else
