@@ -16,7 +16,7 @@ module Formz
     
     ##
     # Push _model_ as the current context while executing
-    # _block_, and returning _block_'s results.
+    # _block_; returning _block_'s results.
     
     def with_form_context model, &block
       form_context.push model
@@ -65,10 +65,10 @@ module Formz
     
     ##
     # Return lowercase name of _model_. Forum::Post
-    # will become 'post', etc.
+    # will become :post, etc.
     
     def model_name model
-      model.class.to_s.split('::').last.downcase
+      model.class.to_s.split('::').last.downcase.to_sym
     end
         
   end
