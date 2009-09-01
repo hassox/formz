@@ -43,7 +43,21 @@ describe Formz do
         end
         markup.should have_tag('input[@value=tjholowaychuk]')
       end
-
+      
+      it "should create an instance when using a symbol" do
+        markup = form_for :user do
+          text :name, :default => 'foo'
+        end
+        markup.should have_tag('input[@value=foo]')
+      end
+      
+       it "should create an instance when using a class" do
+          markup = form_for User do
+            text :name, :default => 'foo'
+          end
+          markup.should have_tag('input[@value=foo]')
+        end
     end
+    
   end
 end
