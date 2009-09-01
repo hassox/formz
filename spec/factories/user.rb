@@ -1,11 +1,11 @@
 
 class User
   include DataMapper::Resource
-  property :uid,   Serial
-  property :name,  String, :length => 5..20
-  property :email, String, :format => :email_address
+  property :uid,   Serial    
+  property :name,  String,   :length => 5..20
+  property :email, String,   :format => :email_address
   property :role,  String
-  property :signature, Text
+  property :signature, Text, :default => 'Enter your forum signature'
 end
 
 Factory.define :user do |user|

@@ -20,6 +20,7 @@ module Formz
     
     def with_form_context model, &block
       form_context.push model
+      p model
       result = yield
       form_context.pop
       result

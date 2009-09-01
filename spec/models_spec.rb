@@ -49,6 +49,14 @@ describe Formz do
           text :name, :default => 'foo'
         end
         markup.should have_tag('input[@value=foo]')
+        
+      end
+      
+      it "should allow model defaults" do
+        markup = form_for :user do
+          textarea :signature
+        end
+        markup.should have_tag('textarea', 'Enter your forum signature')
       end
       
        it "should create an instance when using a class" do
