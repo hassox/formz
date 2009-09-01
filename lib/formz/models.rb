@@ -20,7 +20,6 @@ module Formz
     
     def with_form_context model, &block
       form_context.push model
-      p model
       result = yield
       form_context.pop
       result
@@ -39,6 +38,7 @@ module Formz
     end
     
     def create_tag name, contents, attrs, &block
+      p form_context
       unless name == :form || form_context.blank?
         model = form_context.last
         if model_has_property? model, attrs[:name]
