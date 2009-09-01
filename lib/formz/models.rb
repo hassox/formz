@@ -31,14 +31,13 @@ module Formz
     
     def form_for model, attrs = {}, &block
       model = model.new if model.is_a? Class
-      model = Object.const_get(model).new if model.is_a? Symbol
+      model = Object.const_get(model.to_s.capitalize).new if model.is_a? Symbol
       with_form_context model do
         form model_name(model), attrs, &block  
       end
     end
     
     def create_tag name, contents, attrs, &block
-      p form_context
       unless name == :form || form_context.blank?
         model = form_context.last
         if model_has_property? model, attrs[:name]

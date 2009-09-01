@@ -11,5 +11,3 @@ include Formz::AutoEncoding
 include Formz::FauxMethod
 include Formz::Models
 include Formz::Default
-
-Tagz::Tag.send :include, Formz::Helpers::Delegates

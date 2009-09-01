@@ -40,3 +40,5 @@ module Formz
     autoload :Models, 'formz/default'
   end
 end
+
+Tagz::Tag.send :include, Formz::Helpers::Delegates
