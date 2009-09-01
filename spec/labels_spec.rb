@@ -1,4 +1,6 @@
 
+require File.dirname(__FILE__) + '/spec_helper'
+
 describe Formz do
   describe "labels" do
     it "should add a label element" do

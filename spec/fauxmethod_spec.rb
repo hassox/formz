@@ -1,4 +1,6 @@
 
+require File.dirname(__FILE__) + '/spec_helper'
+
 describe Formz do
   describe "faux method" do
     it "should add a hidden _method field when verb is not POST or GET" do

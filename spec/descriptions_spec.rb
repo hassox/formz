@@ -1,4 +1,6 @@
 
+require File.dirname(__FILE__) + '/spec_helper'
+
 describe Formz do
   describe "descriptions" do
     it "should add descriptions to a field" do
