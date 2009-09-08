@@ -49,6 +49,16 @@ describe Formz do
         end
       end
       
+      it "should allow selections of symbols / strings" do
+        markup = select :province, { 'ab' => 'Alberta', :bc => 'British Columbia' }, :selected => [:ab, 'bc'], :prompt => true
+        markup.should have_tag('option[@value=bc]') do |option|
+          option['selected'].should == 'selected'
+        end
+        markup.should have_tag('option[@value=ab]') do |option|
+          option['selected'].should == 'selected'
+        end
+      end
+      
       it "should allow multiple selections" do
         options = { :nissan => 'Nissan', :acura => 'Acura', :ford => 'Sucks' }
         markup = select :vehicle, options, :selected => [:nissan, :acura]

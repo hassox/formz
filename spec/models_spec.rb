@@ -68,7 +68,6 @@ describe Formz do
           text :name, :default => 'foo'
         end
         markup.should have_tag('input[@value=foo]')
-        
       end
       
       it "should allow model defaults" do

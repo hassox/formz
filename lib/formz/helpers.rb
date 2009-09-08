@@ -115,7 +115,13 @@ module Formz
     # Check if option _key_ is _selected_.
     
     def option_selected? key, selected
-      Array === selected ? key.in?(selected) : selected == key
+      if Array === selected
+        selected.any? do |value|
+          key.to_s == value.to_s
+        end
+      else
+        key.to_s == selected.to_s
+      end
     end
     
     ##
