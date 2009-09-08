@@ -100,6 +100,28 @@ describe Formz do
       end
     end
     
+    describe "#group" do
+      it "should wrap elements in a div" do
+        markup = form :register do
+          group :general do
+            text :name
+            text :email
+          end
+          group :details do
+            text :city
+            text :postal_code
+          end
+        end
+        markup.should have_tag('div[@class=group-general]') do |div|
+          div.should have_tag('input[@name=name]')
+          div.should have_tag('input[@name=email]')
+        end
+        markup.should have_tag('div[@class=group-details]') do |div|
+          div.should have_tag('input[@name=city]')
+        end
+      end
+    end
+    
     describe "#radio_group" do
       it "should create a radio button group" do
         markup = radio_group :choice, { :yes => 'Yes', :no => 'No' }, :selected => :no

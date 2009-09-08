@@ -40,6 +40,13 @@ module Formz
     end
     
     ##
+    # Wrap form elements in div _name_.
+    
+    def group name, &block
+      Tagz.tag :div, { :class => "group-#{name}" }, &block
+    end
+    
+    ##
     # Wrap form buttons defined within _block_ in a div.
     
     def buttons attrs = {}, &block
@@ -133,7 +140,7 @@ module Formz
     module Delegates
       %w( select_options select_option select checkbox radio text submit reset hidden 
           button password file checkbox_group radio_group buttons textarea fieldset
-          legend form ).each do |meth|
+          legend form group ).each do |meth|
         class_eval <<-EOF
           def #{meth} *args, &block
             @contents << Formz::Helpers.#{meth}(*args, &block)
