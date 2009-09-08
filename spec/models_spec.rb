@@ -63,6 +63,13 @@ describe Formz do
         markup.should have_tag('input[@value=tjholowaychuk]')
       end
       
+      it "should not override :value" do
+        markup = form_for @user do
+          text :name, :value => 'foo'
+        end
+        markup.should have_tag('input[@value=foo]')
+      end
+      
       it "should create an instance when using a symbol" do
         markup = form_for :user do
           text :name, :default => 'foo'

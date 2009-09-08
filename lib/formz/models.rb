@@ -51,16 +51,18 @@ module Formz
     def create_tag name, contents, attrs, &block
       unless name == :form || form_context.blank?
         model, tag_name = form_context.last, attrs[:name]
-        if attrs[:name] && model_has_property?(model, attrs[:name])
-          attrs[:name] = '%s[%s]' % [model_name(model), tag_name]
-          value = model.send tag_name
-          case name
-          when :textarea ; contents = value
-          else             attrs[:value] = value
+        if attrs[:value].nil?
+          if attrs[:name] && model_has_property?(model, attrs[:name])
+            attrs[:name] = '%s[%s]' % [model_name(model), tag_name]
+            value = model.send tag_name
+            case name
+            when :textarea ; contents = value
+            else             attrs[:value] = value
+            end
           end
         end
         if default = attrs.delete(:default)
-          attrs[:value] = default if attrs[:value].blank?
+          attrs[:value] = default if attrs[:value].nil?
         end
       end
       super
