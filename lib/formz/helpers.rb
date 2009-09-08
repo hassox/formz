@@ -68,7 +68,6 @@ module Formz
     
     ##
     # Return select element _name_ with _options_ hash.
-    #
     
     def select name, options, attrs = {}
       options = select_options options, attrs

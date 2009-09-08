@@ -11,7 +11,7 @@ module Formz
     # Form context model stack.
     
     def form_context
-      @__form_context ||= []
+      $__form_context ||= []
     end
     
     ##
@@ -37,21 +37,28 @@ module Formz
       end
     end
     
+    def select name, options, attrs = {}
+      if model = form_context.last
+        if model_has_property? model, name
+          attrs[:selected] ||= model.send(name)
+        end
+      end
+      super
+    end
+    
     def create_tag name, contents, attrs, &block
       unless name == :form || form_context.blank?
-        model = form_context.last
+        model, tag_name = form_context.last, attrs[:name]
         if model_has_property? model, attrs[:name]
-          attrs[:name] = '%s[%s]' % [model_name(model), attrs[:name]]
-          value = model.send attrs[:name]
+          attrs[:name] = '%s[%s]' % [model_name(model), tag_name]
+          value = model.send tag_name
           case name
           when :textarea ; contents = value
-          when :select   ; @__selected_value = value
           else             attrs[:value] = value
           end
-        elsif name == :option
-          if @__selected_value == attrs[:value].to_s
-            attrs[:selected] = true
-          end
+        end
+        if default = attrs.delete(:default)
+          attrs[:value] = default if attrs[:value].blank?
         end
       end
       super
@@ -61,6 +68,7 @@ module Formz
     # Check if _model_ has _property_name_.
     
     def model_has_property? model, property_name
+      return if property_name.blank?
       model.send(:properties).any? do |property|
         property.name == property_name.to_sym
       end
