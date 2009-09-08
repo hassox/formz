@@ -29,7 +29,6 @@ module Formz
   autoload :Labels, 'formz/labels'
   autoload :Errors, 'formz/errors'
   autoload :Models, 'formz/models'
-  autoload :Default, 'formz/default'
   autoload :Helpers, 'formz/helpers'
   autoload :Wrappers, 'formz/wrappers'
   autoload :FauxMethod, 'formz/fauxmethod'
