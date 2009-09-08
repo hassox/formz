@@ -8,7 +8,7 @@ require 'tagz/import'
 
 class User
   include DataMapper::Resource
-  property :uid,   Serial    
+  property :uid,    Serial    
   property :name,  String,   :length => 5..20
   property :email, String,   :format => :email_address
   property :role,  String
@@ -25,7 +25,7 @@ end
 
 puts "\nAnonymous"
 markup = form_for :user do
-  hidden :id
+  hidden :uid
   text :name, :label => 'Username', :required => true
   text :email, :default => 'example@site.com'
   textarea :signature
@@ -35,7 +35,7 @@ puts markup
 
 puts "\nPopulated Model"
 markup = form_for Factory.build(:user) do
-  hidden :id
+  hidden :uid
   text :name, :label => 'Username', :required => true
   text :email, :default => 'example@site.com'
   textarea :signature
