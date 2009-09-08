@@ -51,7 +51,7 @@ module Formz
     def create_tag name, contents, attrs, &block
       unless name == :form || form_context.blank?
         model, tag_name = form_context.last, attrs[:name]
-        if model_has_property? model, attrs[:name]
+        if attrs[:name] && model_has_property?(model, attrs[:name])
           attrs[:name] = '%s[%s]' % [model_name(model), tag_name]
           value = model.send tag_name
           case name
@@ -70,7 +70,6 @@ module Formz
     # Check if _model_ has _property_name_.
     
     def model_has_property? model, property_name
-      return if property_name.blank?
       model.send(:properties).any? do |property|
         property.name == property_name.to_sym
       end
