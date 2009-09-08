@@ -40,7 +40,9 @@ module Formz
     def select name, options, attrs = {}
       if model = form_context.last
         if model_has_property? model, name
-          attrs[:selected] ||= model.send(name)
+          if value = model.send(name)
+            attrs[:selected] ||= value.to_sym
+          end
         end
       end
       super

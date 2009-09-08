@@ -44,7 +44,7 @@ describe Formz do
       
       it "should default selected options to the form defaults" do
         markup = form_for @user do
-          select :role, :admin => 'Admin', :manager => 'Manager', :selected => :manager
+          select :role, { :admin => 'Admin', :manager => 'Manager' }, :selected => :manager
         end
         markup.should have_tag('select[@name=user[role]]') do |role|
           role.should have_tag('option[@value=admin]') do |admin|
