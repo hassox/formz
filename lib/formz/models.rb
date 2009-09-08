@@ -26,12 +26,12 @@ module Formz
     end
     
     ##
-    # Return a form in context to _model_. Model may be
+    # Return a form in context to _model_. _model_ may be
     # an object, class, or symbol.
     
     def form_for model, attrs = {}, &block
+      model = Object.const_get model.to_s.capitalize if model.is_a? Symbol
       model = model.new if model.is_a? Class
-      model = Object.const_get(model.to_s.capitalize).new if model.is_a? Symbol
       with_form_context model do
         form model_name(model), attrs, &block  
       end

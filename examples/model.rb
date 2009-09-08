@@ -26,7 +26,7 @@ end
 puts "\nAnonymous"
 markup = form_for :user do
   hidden :id
-  text :name
+  text :name, :label => 'Username', :required => true
   text :email, :default => 'example@site.com'
   textarea :signature
   select :role, :admin => 'Admin', :manager => 'Manager'
@@ -36,7 +36,7 @@ puts markup
 puts "\nPopulated Model"
 markup = form_for Factory.build(:user) do
   hidden :id
-  text :name
+  text :name, :label => 'Username', :required => true
   text :email, :default => 'example@site.com'
   textarea :signature
   select :role, :admin => 'Admin', :manager => 'Manager'
