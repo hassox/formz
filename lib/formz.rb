@@ -34,10 +34,6 @@ module Formz
   autoload :FauxMethod, 'formz/fauxmethod'
   autoload :Descriptions, 'formz/descriptions'
   autoload :AutoEncoding, 'formz/autoencoding'
-  module Default
-    autoload :Params, 'formz/default'
-    autoload :Models, 'formz/default'
-  end
 end
 
 Tagz::Tag.send :include, Formz::Helpers::Delegates
