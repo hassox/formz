@@ -34,7 +34,7 @@ end
 puts markup
 
 puts "\nPopulated Model"
-markup = form_for Factory.build(:user) do
+markup = form_for Factory.build(:user), :method => :put do
   hidden :uid
   text :name, :label => 'Username', :required => true
   text :email, :default => 'example@site.com'
