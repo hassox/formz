@@ -13,7 +13,7 @@ describe Formz do
     end
     
     it "should not duplicate fields" do
-      form(:save, :method => :put).should have_tag('form[@name=_method]', :times => 1)
+      form(:save, :method => :put).should have_tag('input[@name=_method]', :times => 1)
     end
         
     it "should not add a hidden field when GET or POST" do

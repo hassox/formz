@@ -5,17 +5,18 @@ module Formz
   # = Formz::FauxMethod
   #
   # Fake out methods using the hidden field '_method'
-  # when the HTTP method is not GET or POST.
+  # when the HTTP method is not GET or POST. Defaults the 
+  # method to POST.
   
   module FauxMethod
     
     def create_tag name, contents, attrs, &block
       if name == :form
-        attrs[:method] = :post unless :method.in? attrs
+        attrs[:method] ||= :post
         unless valid_http_method? attrs[:method]
-          method = hidden :_method, attrs[:method]
+          method = Tagz.tag :input, :type => :hidden, :name => :_method, :value => attrs[:method]
           attrs[:method] = :post
-          contents = contents.to_s << method
+          contents << method
         end
       end
       super
