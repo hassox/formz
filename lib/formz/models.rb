@@ -53,6 +53,13 @@ module Formz
         model, tag_name = form_context.last, attrs[:name]
         if attrs[:value].nil?
           if attrs[:name] && model_has_property?(model, attrs[:name])
+            # Errors
+            unless model.new_record? || model.valid?
+              if errors = model.errors.on(attrs[:name])
+                attrs[:error] = errors.first
+              end
+            end
+            # Values
             attrs[:name] = '%s[%s]' % [model_name(model), tag_name]
             value = model.send tag_name
             case name
