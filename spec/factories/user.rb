@@ -15,3 +15,11 @@ Factory.define :user do |user|
   user.role 'admin'
   user.signature 'Foo bar'
 end
+
+Factory.define :invalid_user, :class => :user do |user|
+  user.uid 2
+  user.name 'tjholowaychuk'
+  user.email 'foobar'
+  user.role 'admin'
+  user.signature 'Foo bar'
+end

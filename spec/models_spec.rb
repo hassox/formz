@@ -5,6 +5,7 @@ describe Formz do
   describe "models" do
     before :each do
       @user = Factory.build :user
+      @invalid_user = Factory.build :invalid_user
     end
     
     describe "#form_for" do
@@ -84,12 +85,28 @@ describe Formz do
         markup.should have_tag('textarea', 'Enter your forum signature')
       end
       
-       it "should create an instance when using a class" do
-          markup = form_for User do
-            text :name, :default => 'foo'
-          end
-          markup.should have_tag('input[@value=foo]')
+      it "should create an instance when using a class" do
+        markup = form_for User do
+          text :name, :default => 'foo'
         end
+        markup.should have_tag('input[@value=foo]')
+      end
+      
+      it "should not display errors for new records" do
+        markup = form_for :user do
+           text :name
+        end
+        markup.should_not have_tag('.error_message')
+      end
+      
+      it "should display errors invalid records" do
+        markup = form_for @invalid_user do
+           text :name
+           text :email
+        end
+        puts markup
+        markup.should have_tag('.error_message')
+      end
     end
     
   end
