@@ -54,7 +54,7 @@ module Formz
         if attrs[:value].nil?
           if attrs[:name] && model_has_property?(model, attrs[:name])
             # Errors
-            unless model.new_record? || model.valid?
+            unless model.new? || model.valid?
               if errors = model.errors.on(attrs[:name])
                 attrs[:error] = errors.first
               end
