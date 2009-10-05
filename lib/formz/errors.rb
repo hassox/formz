@@ -20,6 +20,9 @@ module Formz
   
   module Errors
     
+    ##
+    # Array of form specific errors.
+    
     def form_errors
       @__form_errors ||= []
     end
