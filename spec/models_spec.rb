@@ -101,6 +101,7 @@ describe Formz do
       
       it "should display errors invalid records" do
         @invalid_user.stub(:new?).and_return false
+        @invalid_user.valid?
         markup = form_for @invalid_user do
            text :name
            text :email

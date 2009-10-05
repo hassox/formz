@@ -13,7 +13,7 @@ module Formz
   #
   #   <div class="field-password">
   #     <label for="password">Password:</label>
-  #     <input name="password" class=" error" type="password" value="" />
+  #     <input name="password" class="error" type="password" value="" />
   #     <span class="error-message">Invalid Password</span>
   #   </div>
   #

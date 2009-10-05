@@ -54,10 +54,8 @@ module Formz
         if attrs[:value].nil?
           if attrs[:name] && model_has_property?(model, attrs[:name])
             # Errors
-            unless model.new? || model.valid?
-              if errors = model.errors.on(attrs[:name])
-                attrs[:error] = errors.first
-              end
+            if errors = model.errors.on(attrs[:name])
+              attrs[:error] = errors.first
             end
             # Values
             attrs[:name] = '%s[%s]' % [model_name(model), tag_name]
