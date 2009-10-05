@@ -1,4 +1,8 @@
 
+=== 0.0.4 / 2009-10-05
+
+* Added .field class to form wrappers
+
 === 0.0.3 / 2009-10-05
 
 * Errors on models should display regardless of it being a new record
