@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{formz}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["TJ Holowaychuk"]
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = %q{Framework independant tag helpers}
   s.email = %q{tj@vision-media.ca}
   s.extra_rdoc_files = ["README.rdoc", "lib/formz.rb", "lib/formz/autoencoding.rb", "lib/formz/descriptions.rb", "lib/formz/errors.rb", "lib/formz/fauxmethod.rb", "lib/formz/helpers.rb", "lib/formz/import.rb", "lib/formz/labels.rb", "lib/formz/models.rb", "lib/formz/version.rb", "lib/formz/wrappers.rb", "tasks/docs.rake", "tasks/gemspec.rake", "tasks/spec.rake"]
-  s.files = ["History.rdoc", "Manifest", "README.rdoc", "Rakefile", "benchmarks/small.rb", "examples/model.rb", "examples/small.rb", "lib/formz.rb", "lib/formz/autoencoding.rb", "lib/formz/descriptions.rb", "lib/formz/errors.rb", "lib/formz/fauxmethod.rb", "lib/formz/helpers.rb", "lib/formz/import.rb", "lib/formz/labels.rb", "lib/formz/models.rb", "lib/formz/version.rb", "lib/formz/wrappers.rb", "spec/autoencoding_spec.rb", "spec/descriptions_spec.rb", "spec/errors_spec.rb", "spec/factories/user.rb", "spec/fauxmethod_spec.rb", "spec/helpers_spec.rb", "spec/labels_spec.rb", "spec/models_spec.rb", "spec/spec.opts", "spec/spec_helper.rb", "spec/wrappers_spec.rb", "tasks/docs.rake", "tasks/gemspec.rake", "tasks/spec.rake", "formz.gemspec"]
+  s.files = ["History.rdoc", "Manifest", "README.rdoc", "Rakefile", "benchmarks/small.rb", "examples/model.rb", "examples/small.rb", "formz.gemspec", "lib/formz.rb", "lib/formz/autoencoding.rb", "lib/formz/descriptions.rb", "lib/formz/errors.rb", "lib/formz/fauxmethod.rb", "lib/formz/helpers.rb", "lib/formz/import.rb", "lib/formz/labels.rb", "lib/formz/models.rb", "lib/formz/version.rb", "lib/formz/wrappers.rb", "spec/autoencoding_spec.rb", "spec/descriptions_spec.rb", "spec/errors_spec.rb", "spec/factories/user.rb", "spec/fauxmethod_spec.rb", "spec/helpers_spec.rb", "spec/labels_spec.rb", "spec/models_spec.rb", "spec/spec.opts", "spec/spec_helper.rb", "spec/wrappers_spec.rb", "tasks/docs.rake", "tasks/gemspec.rake", "tasks/spec.rake"]
   s.homepage = %q{http://github.com/visionmedia/formz}
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Formz", "--main", "README.rdoc"]
   s.require_paths = ["lib"]

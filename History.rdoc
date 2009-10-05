@@ -1,4 +1,8 @@
 
+=== 0.0.3 / 2009-10-05
+
+* Errors on models should display regardless of it being a new record
+
 === 0.0.2 / 2009-10-05
 
 * Fixed errors module

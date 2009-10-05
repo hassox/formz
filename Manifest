@@ -5,6 +5,7 @@ Rakefile
 benchmarks/small.rb
 examples/model.rb
 examples/small.rb
+formz.gemspec
 lib/formz.rb
 lib/formz/autoencoding.rb
 lib/formz/descriptions.rb
