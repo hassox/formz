@@ -21,18 +21,10 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #++
 
-require 'tagz/import'
-require 'formz/version'
+require 'rext/all'
+require 'tagz/tagz'
+require 'tagz/version'
 
-module Formz
-  autoload :Labels, 'formz/labels'
-  autoload :Errors, 'formz/errors'
-  autoload :Models, 'formz/models'
-  autoload :Helpers, 'formz/helpers'
-  autoload :Wrappers, 'formz/wrappers'
-  autoload :FauxMethod, 'formz/fauxmethod'
-  autoload :Descriptions, 'formz/descriptions'
-  autoload :AutoEncoding, 'formz/autoencoding'
+module Tagz
+  autoload :Helpers, 'tagz/helpers'
 end
-
-Tagz::Tag.send :include, Formz::Helpers::Delegates
