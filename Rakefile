@@ -14,3 +14,5 @@ Echoe.new "formz", Formz::VERSION do |p|
   p.development_dependencies << 'rspec_hpricot_matchers >=1.0.0'
   p.development_dependencies << 'thoughtbot-factory_girl'
 end
+
+task :gemspec => [:build_gemspec]
