@@ -10,9 +10,6 @@ Echoe.new "formz", Formz::VERSION do |p|
   p.email = "tj@vision-media.ca"
   p.summary = "Framework independant tag helpers"
   p.url = "http://github.com/visionmedia/formz"
-  p.runtime_dependencies << 'visionmedia-tagz >=1.1.1'
   p.development_dependencies << 'rspec_hpricot_matchers >=1.0.0'
   p.development_dependencies << 'thoughtbot-factory_girl'
 end
-
-Dir['tasks/**/*.rake'].sort.each { |f| load f }
