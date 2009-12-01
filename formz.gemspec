@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["TJ Holowaychuk"]
-  s.date = %q{2009-11-18}
+  s.date = %q{2009-12-01}
   s.description = %q{Framework independant tag helpers}
   s.email = %q{tj@vision-media.ca}
   s.extra_rdoc_files = ["README.rdoc", "lib/formz.rb", "lib/formz/autoencoding.rb", "lib/formz/descriptions.rb", "lib/formz/errors.rb", "lib/formz/fauxmethod.rb", "lib/formz/helpers.rb", "lib/formz/import.rb", "lib/formz/labels.rb", "lib/formz/models.rb", "lib/formz/version.rb", "lib/formz/wrappers.rb", "lib/tagz.rb", "lib/tagz/helpers.rb", "lib/tagz/import.rb", "lib/tagz/tagz.rb", "lib/tagz/version.rb"]
