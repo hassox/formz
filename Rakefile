@@ -11,6 +11,7 @@ Echoe.new "formz", Formz::VERSION do |p|
   p.summary = "Framework independant tag helpers"
   p.url = "http://github.com/visionmedia/formz"
   p.runtime_dependencies << 'rext >=0.5.0'
+  p.runtime_dependencies << 'builder'
   p.development_dependencies << 'rspec_hpricot_matchers >=1.0.0'
   p.development_dependencies << 'thoughtbot-factory_girl'
 end
