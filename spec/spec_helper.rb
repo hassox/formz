@@ -9,8 +9,6 @@ require 'rspec_hpricot_matchers'
 require 'formz'
 
 class FormFactory
-  include Tagz
-  include Tagz::Helpers
   include Formz::Labels
   include Formz::Descriptions
   include Formz::Errors
@@ -19,6 +17,8 @@ class FormFactory
   include Formz::AutoEncoding
   include Formz::FauxMethod
   include Formz::Models
+  include Tagz
+  include Tagz::Helpers
 end
 
 module Formz::SpecHelper
