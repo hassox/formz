@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + '/spec_helper'
 describe Formz do
   describe "descriptions" do
     it "should add descriptions to a field" do
-      text(:name, :description => 'Enter your firstname.').
+      formz.text(:name, :description => 'Enter your firstname.').
       should have_tag('span.description', 'Enter your firstname.')
     end
   end
