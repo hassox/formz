@@ -7,7 +7,6 @@ examples/model.rb
 examples/small.rb
 formz.gemspec
 lib/formz.rb
-lib/formz/autoencoding.rb
 lib/formz/descriptions.rb
 lib/formz/errors.rb
 lib/formz/fauxmethod.rb
