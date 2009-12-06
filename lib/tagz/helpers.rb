@@ -1,19 +1,17 @@
 
 module Tagz
-  
+
   ##
   # = Helpers
   #
   # Tagz::Helpers consists of methods which
   # assist creation of common tag combinations
   # and standards. For example images may simply
-  # call image('foo.png'), as a shortcut for 
+  # call image('foo.png'), as a shortcut for
   # tag(:img, :src => 'foo.png').
   #
-  
-  module Helpers
 
-    module_function
+  module Helpers
 
     ##
     # Return image tag to _path_.
@@ -28,7 +26,7 @@ module Tagz
     #
 
     def image path, attrs = {}
-      Tagz.tag :img, { :src => path }.merge(attrs)
+      tag :img, { :src => path }.merge(attrs)
     end
 
     ##
@@ -52,11 +50,11 @@ module Tagz
 
     def stylesheet path = nil, attrs = {}, &block
       return tag(:style, yield, { :type => 'text/css' }.merge(attrs)) if block
-      Tagz.tag :link, { :rel => 'stylesheet', :href => path }.merge(attrs)
+      tag :link, { :rel => 'stylesheet', :href => path }.merge(attrs)
     end
 
     ##
-    # Return script tag to _path_. When a _block_ is passed, 
+    # Return script tag to _path_. When a _block_ is passed,
     # a script tag will be created with the yielded value as
     # its contents.
     #
@@ -69,11 +67,11 @@ module Tagz
     #
     #   javascript 'jquery.js'
     #   # => <script type="text/javascript" src="jquery.js"></script>
-    #  
+    #
 
     def javascript path = nil, attrs = {}, &block
       contents = yield if block
-      Tagz.tag :script, contents, { :type => 'text/javascript', :src => path }.merge(attrs)
+      tag :script, contents, { :type => 'text/javascript', :src => path }.merge(attrs)
     end
 
     ##
@@ -83,13 +81,13 @@ module Tagz
     #
     #   meta :keywords, 'foo bar'
     #   meta :description, 'Welcome to foo bar'
-    #   
+    #
     #   # => <meta name="keywords" contents="foo bar">
     #   # => <meta name="description" contents="Welcome to foo bar">
     #
 
     def meta name, contents
-      Tagz.tag :meta, :name => name, :contents => contents 
+      tag :meta, :name => name, :contents => contents
     end
 
     ##
@@ -104,20 +102,5 @@ module Tagz
     def cdata contents
       "<![CDATA[#{contents}]]>"
     end
-    
-    #--
-    # Delegates
-    #++
-    
-    module Delegates
-      %w( cdata meta javascript stylesheet image ).each do |meth|
-        class_eval <<-EOF
-          def #{meth} *args, &block
-            @contents << Tagz::Helpers.#{meth}(*args, &block)
-          end
-        EOF
-      end
-    end
-    
   end
 end

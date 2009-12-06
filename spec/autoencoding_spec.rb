@@ -8,7 +8,7 @@ describe Formz do
         file :image
         submit :op, 'Upload'
       end
-      markup.should have_tag('form[@enctype="form/multi-part"]')
+      markup.should have_tag('form[@enctype="multipart/form-data"]')
     end
   end
 end

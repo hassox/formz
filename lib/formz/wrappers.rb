@@ -1,6 +1,6 @@
 
 module Formz
-  
+
   ##
   # = Formz::Wrappers
   #
@@ -16,7 +16,7 @@ module Formz
   #     <input type="file" name="upload" />
   #   </div>
   #
-  
+
   module Wrappers
     WRAP_TAGS = :input, :textarea, :select
 
@@ -25,10 +25,10 @@ module Formz
         classes = "field-#{attrs[:name].to_s.gsub('[', '-').gsub(']', '')}"
         classes.add_class "field-#{attrs[:type]}" if :type.in? attrs
         classes.add_class 'field'
-        Tagz.tag :div, super, :class => classes
-      else 
+        tag :div, super, :class => classes
+      else
         super
       end
-    end    
+    end
   end
 end

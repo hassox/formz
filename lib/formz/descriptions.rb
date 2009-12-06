@@ -1,6 +1,6 @@
 
 module Formz
-  
+
   ##
   # = Formz::Descriptions
   #
@@ -17,11 +17,11 @@ module Formz
   #     <span class="description">Upload a file.</span>
   #   </div>
   #
-  
+
   module Descriptions
     def create_tag name, contents, attrs, &block
       if description = attrs.delete(:description)
-        super << Tagz.tag(:span, description, :class => 'description')
+        super << tag(:span, description, :class => 'description')
       else
         super
       end

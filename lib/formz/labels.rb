@@ -1,6 +1,6 @@
 
 module Formz
-  
+
   ##
   # = Formz::Labels
   #
@@ -10,7 +10,7 @@ module Formz
   # label, in cases such as for checkboxes or radio
   # buttons.
   #
-  # When using labels, a :required attribute may also 
+  # When using labels, a :required attribute may also
   # be passed, which will alter the markup to indicate
   # the input field is required.
   #
@@ -23,10 +23,10 @@ module Formz
   #     <input type="file" name="upload" />
   #   </div>
   #
-  
+
   module Labels
     NESTED_LABEL_INPUT_TYPES = :checkbox, :radio
-    
+
     def create_tag name, contents, attrs, &block
       if name != :optgroup && string = attrs.delete(:label)
         label_attrs = { :for => attrs[:name], :required => attrs.delete(:required) }
@@ -44,10 +44,10 @@ module Formz
     # Return a label with _string_. When _contents_
     # is present the label will act as a wrapper for
     # checkboxes, radios etc.
-    
+
     def label string, contents = nil, attrs = {}
       attrs, contents = contents, nil if contents.is_a? Hash
-      Tagz.tag :label, contents.to_s + string + (contents ? '' :
+      tag :label, contents.to_s + string + (contents ? '' :
             attrs.delete(:required) ? '<em>*</em>:' :
               ':'), attrs
     end

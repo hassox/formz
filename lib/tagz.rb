@@ -24,7 +24,20 @@
 require 'rext/all'
 require 'tagz/tagz'
 require 'tagz/version'
+require 'builder'
 
 module Tagz
   autoload :Helpers, 'tagz/helpers'
+end
+
+unless defined?(BasicObject)
+  begin
+    require 'blankslate'
+    ::BasicObject = BlankSlate
+    class BasicObject
+    end
+  rescue => e
+    puts "Please install builder: gem install builder"
+    raise e.class, e.message, e.backtrace
+  end
 end

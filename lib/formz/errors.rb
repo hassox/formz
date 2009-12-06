@@ -1,6 +1,6 @@
 
 module Formz
-  
+
   ##
   # = Formz::Errors
   #
@@ -17,21 +17,21 @@ module Formz
   #     <span class="error-message">Invalid Password</span>
   #   </div>
   #
-  
+
   module Errors
-    
+
     ##
     # Array of form specific errors.
-    
+
     def form_errors
       @__form_errors ||= []
     end
-    
+
     def create_tag name, contents, attrs, &block
       if error = attrs.delete(:error)
         form_errors << error
         (attrs[:class] ||= '').add_class 'error'
-        super << Tagz.tag(:span, error, :class => 'error-message')
+        super << tag(:span, error, :class => 'error-message')
       else
         super
       end

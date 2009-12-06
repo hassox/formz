@@ -32,7 +32,5 @@ module Formz
   autoload :Wrappers, 'formz/wrappers'
   autoload :FauxMethod, 'formz/fauxmethod'
   autoload :Descriptions, 'formz/descriptions'
-  autoload :AutoEncoding, 'formz/autoencoding'
 end
 
-Tagz::Tag.send :include, Formz::Helpers::Delegates
